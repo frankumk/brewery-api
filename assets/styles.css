@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background: forestgreen;
+}
+li{
+    list-style: armenian;
+}
+#main{
+    background: #FFFF8A;
+}
+button{
+    height: 2rem;
+}
