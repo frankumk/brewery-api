@@ -9,17 +9,13 @@ app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use('/assets',express.static(path.join(__dirname,'./assets')));
 
 const BreweryDb = require('brewerydb-node');
-const brewdb = new BreweryDb('513cbbb6b212de0c532077e16ac448da');
-// const brewkey = require('./brewerydb.js')
 require("dotenv").config()
-// process.env.BREWERY_KEY = BREWERY_KEY
+const brewdb = new BreweryDb(process.env.BREWERY_KEY);
 
-//`https://sandbox-api.brewerydb.com/v2/breweries/?key=${process.env.BREWERY_KEY}`
 
 app.get('/api/breweries',async(req,res,next)=>{
     try{
         const breweries = (await axios.get(`https://sandbox-api.brewerydb.com/v2/breweries/?key=${process.env.BREWERY_KEY}`)).data
-        // console.log(breweries)
         res.status(201).send(breweries);
     }catch(ex){
         console.log(ex);
